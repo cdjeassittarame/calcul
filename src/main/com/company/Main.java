@@ -5,53 +5,69 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-int nombreCalcul=0;
+        int nombreCalcul=0;
+        String nombre1=null;
+        String nombre2=null;
+        String Calcul=null;
         System.out.println("Bienvenue dans votre calculatrice");
-
-        Scanner scannerNombre1 = new Scanner(System.in);
-        System.out.println("Veuillez Choisir un premier nombre");
-        String nombre1 = scannerNombre1.nextLine();
-
-        Scanner scannerNombre2 = new Scanner(System.in);
-        System.out.println("Veuillez Choisir un deuxieme nombre");
-        String nombre2 = scannerNombre2.nextLine();
-
-        System.out.println("Veuillez Choisir un type de calcul");
-        Scanner scannerCalcul = new Scanner(System.in);
-        System.out.println("1.Addition 2.Soustraction 3.Multiplication 4.Division");
-        try {
-            String Calcul = scannerCalcul.nextLine();
+        do {
+            System.out.println("Veuillez Choisir un type de calcul");
+            Scanner scannerCalcul = new Scanner(System.in);
+            System.out.println("1.Addition 2.Soustraction 3.Multiplication 4.Division 5.Reset");
+            Calcul = scannerCalcul.nextLine();
             int integerCalcul = Integer.parseInt(Calcul);
-            int integerNombre1= Integer.parseInt(nombre1);
-            int integerNombre2= Integer.parseInt(nombre2);
-            if (integerCalcul >= 1 & integerCalcul <= 4) {
-                switch (integerCalcul){
-                    case 1:
-                        nombreCalcul = integerNombre1 + integerNombre2;
-                        System.out.println(nombreCalcul);
-                        break;
-                    case 2:
-                        nombreCalcul = integerNombre1 - integerNombre2;
-                        System.out.println(nombreCalcul);
-                        break;
-                    case 3:
-                        nombreCalcul = integerNombre1 * integerNombre2;
-                        System.out.println(nombreCalcul);
-                        break;
-                    case 4:
-                        nombreCalcul = integerNombre1 / integerNombre2;
-                        System.out.println(nombreCalcul);
-                        break;
-                    default:
-                        System.out.println("null");
-                }
+
+            if (integerCalcul == 5){
+                nombreCalcul = 0;
             }
-        }catch (NumberFormatException e){
-            System.out.println("Error: " + e);
-            return;
-        }
-        System.out.println("fin du programme");
-        return;
+
+            if (nombreCalcul == 0) {
+                Scanner scannerNombre1 = new Scanner(System.in);
+                System.out.println("Veuillez Choisir un premier nombre");
+                nombre1 = scannerNombre1.nextLine();
+            }
+
+
+            Scanner scannerNombre2 = new Scanner(System.in);
+            System.out.println("Veuillez Choisir un deuxieme nombre");
+            nombre2 = scannerNombre2.nextLine();
+
+            try {
+                nombreCalcul = Integer.parseInt(nombre1);
+                int integerNombre2 = Integer.parseInt(nombre2);
+
+
+                if (integerCalcul >= 1 & integerCalcul <= 4) {
+                    switch (integerCalcul) {
+                        case 1:
+                            nombreCalcul = nombreCalcul + integerNombre2;
+                            nombre1 = String.valueOf(nombreCalcul);
+                            System.out.println(nombreCalcul);
+                            break;
+                        case 2:
+                            nombreCalcul = nombreCalcul - integerNombre2;
+                            nombre1 = String.valueOf(nombreCalcul);
+                            System.out.println(nombreCalcul);
+                            break;
+                        case 3:
+                            nombreCalcul = nombreCalcul * integerNombre2;
+                            nombre1 = String.valueOf(nombreCalcul);
+                            System.out.println(nombreCalcul);
+                            break;
+                        case 4:
+                            nombreCalcul = nombreCalcul / integerNombre2;
+                            nombre1 = String.valueOf(nombreCalcul);
+                            System.out.println(nombreCalcul);
+                            break;
+                        default:
+                            System.out.println("null");
+                    }
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error: " + e);
+                return;
+            }
+        }while(true);
 
     }
 }
